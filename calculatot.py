@@ -1,3 +1,12 @@
+#!flask/bin/python
+from flask import Flask
+from flask import request
+import datetime
+import re
+import pytz
+
+app = Flask(__name__)
+
 print("Ноль в качестве знака операции"
       "\nзавершит работу программы")
 while True:
