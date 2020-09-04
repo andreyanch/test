@@ -24,7 +24,7 @@ pipeline {
         }
         stage("clean container and image") {
             steps {
-                sh 'python test/clean.py'
+                sh 'python ./clean.py'
             }
         }
         stage("create docker image") {
