@@ -74,4 +74,4 @@ def check_input_data(a, b, operation):
 def web_core():
     return api_get_help()
 
-app.run(host='127.0.0.1', port=5000)
+app.run(host='192.168.56.101', port=5000)
