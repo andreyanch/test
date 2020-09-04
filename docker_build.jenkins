@@ -22,6 +22,11 @@ pipeline {
                 sh 'git clone https://github.com/andreyanch/test'
             }
         }
+        stage("clean container and image") {
+            steps {
+                sh 'python cicd_test/clean_docker_garbage.py'
+            }
+        }
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
