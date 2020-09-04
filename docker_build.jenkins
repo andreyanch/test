@@ -27,6 +27,7 @@ pipeline {
                 echo " ============== start building image =================="
                   dir('.') {
                 	sh 'docker build -t toolbox:latest . '
+                    sh 'docker run -d -p 5000:5000 calculator'
                   }
             }
         }
