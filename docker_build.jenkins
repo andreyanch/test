@@ -22,11 +22,7 @@ pipeline {
                 sh 'git clone https://github.com/andreyanch/test'
             }
         }
-        stage("clone git project to local folder") {
-            steps {
-                sh 'docker rm -f $(docker ps -a -q)'
-            }
-        }
+        
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
