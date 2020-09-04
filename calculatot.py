@@ -29,3 +29,8 @@ while True:
                 print("Деление на ноль!")
     else:
         print("Неверный знак операции!")
+            
+def web_core():
+    return api_get_help()
+
+app.run(host='0.0.0.0', port=5000)
