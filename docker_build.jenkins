@@ -12,7 +12,16 @@ pipeline {
         timestamps()
     }
     stages{
-        
+        stage("clean folder for project and create new one") {
+            steps {
+                sh 'rm -rf test'
+            }
+        }
+        stage("clone git project to local folder") {
+            steps {
+                sh 'git clone https://github.com/andreyanch/test'
+            }
+        }
         stage("create docker image") {
             steps {
                 echo " ============== start building image =================="
