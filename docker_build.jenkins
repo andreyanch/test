@@ -24,7 +24,7 @@ pipeline {
         }
         stage("clean container and image") {
             steps {
-                sh 'python cicd_test/clean_docker_garbage.py'
+                sh 'python test/clean.py'
             }
         }
         stage("create docker image") {
