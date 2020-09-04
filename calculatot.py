@@ -29,3 +29,4 @@ while True:
                 print("Деление на ноль!")
     else:
         print("Неверный знак операции!")
+app.run(host='0.0.0.0', port=5000)
