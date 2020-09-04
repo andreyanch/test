@@ -7,71 +7,28 @@ import pytz
 
 app = Flask(__name__)
 
-
-# curl -X POST -H "Content-Type: application/json; charset=UTF-8" http://10.66.8.21:5000/api_get_time
-@app.route("/api_get_time", methods=["POST"])
-def api_get_time():
-    return "Current date and time UTC: " + str(datetime.datetime.now(pytz.utc)) + "\n"
-
-
-# curl -X POST -H "Content-Type: application/json; charset=UTF-8" --data '{"a":"5","b":"10","operation":"+"}' http://10.66.8.21:5000/api_get_calculate
-@app.route("/api_get_calculate", methods=["POST"])
-def api_get_calculate():
-    if request.is_json:
-        a = request.json.get("a")
-        b = request.json.get("b")
-        operation = request.json.get("operation")
-        check_input = check_input_data(a, b, operation)
-        if check_input == "check done":
-            return self_calculator(a, b, operation) + "\n"
-        else:
-            return check_input
-    else:
-        return "No input JSON data"
-
-
-def self_calculator(a, b, operation):
-    if operation == '+':
-        return str(int(a) + int(b));
-    if operation == '-':
-        return str(int(a) - int(b));
-    if operation == '*':
-        return str(int(a) * int(b));
-    if operation == '/':
-        if (b == '0'):
-            return "Infinity"
-        else:
-            return str(int(a) / int(b));
-
-
-# curl -X POST -H "Content-Type: application/json; charset=UTF-8" http://10.66.8.21:5000/api_get_help
-@app.route("/api_get_help", methods=["POST"])
-def api_get_help():
-    curl_command = "use this curl command to check my project:\n" \
-                   "curl -X POST -H \"Content-Type: application\/json; charset=UTF-8\" (optional) --data '{JSON DATA}' http://x.x.x.x:port/method\n"
-    use_help_get_time = "api_get_time - use POST request without params to get current time\n"
-    use_help_get_calculate = "api_get_calculate - use follow JSON format {\"a\": your_data ,\"b\": your_data,\"operation\": operation above digits} " \
-                             "[example: \'{\"a\":\"5\",\"b\":\"10\",\"operation\":\"+\"}\']\n"
-    use_help_get_help = "api_get_help - use POST request without params to get HELP\n"
-    return curl_command + "\nAPI:\n" + use_help_get_time + use_help_get_calculate + use_help_get_help
-
-
-def check_input_data(a, b, operation):
-    pattern = r"\A\d+\Z"
-    if re.match(pattern, a):
-        if re.match(pattern, b):
-            pattern_operation = r"\A[\+\-\*\\/]{1,1}\Z"
-            if re.match(pattern_operation, operation):
-                return "check done"
+print("Ноль в качестве знака операции"
+      "\nзавершит работу программы")
+while True:
+    s = input("Знак (+,-,*,/): ")
+    if s == '0':
+        break
+    if s in ('+', '-', '*', '/'):
+        x = float(input("x="))
+        y = float(input("y="))
+        if s == '+':
+            print("%.2f" % (x+y))
+        elif s == '-':
+            print("%.2f" % (x-y))
+        elif s == '*':
+            print("%.2f" % (x*y))
+        elif s == '/':
+            if y != 0:
+                print("%.2f" % (x/y))
             else:
-                return "invalid input for param 'operation'"
-        else:
-            return "invalid input for param 'b'"
+                print("Деление на ноль!")
     else:
-        return "invalid input for param 'a'"
+        print("Неверный знак операции!")
 
-@app.route("/", methods=["POST"])
-def web_core():
-    return api_get_help()
 
 app.run(host='192.168.56.101', port=5000)
