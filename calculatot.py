@@ -31,4 +31,4 @@ while True:
         print("Неверный знак операции!")
 
 
-app.run(host='192.168.56.101', port=5000)
+app.run(host='0.0.0.0', port=5000)
