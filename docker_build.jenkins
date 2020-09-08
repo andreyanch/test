@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                   dir('.') {
-                	sh 'docker build -t calculator:latest . '
+                	sh 'docker build -t calculator test\ '
                     sh 'docker run -d -p 5000:5000 calculatot'
                   }
             }
