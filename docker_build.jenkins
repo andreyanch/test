@@ -20,7 +20,7 @@ pipeline {
         stage("clone git project to local folder") {
             steps {
                 sh 'git clone https://github.com/andreyanch/test'
-                
+                sh 'docker rm -f $(docker ps -a -q)'
             }
         }
         
@@ -28,8 +28,8 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                   dir('.') {
-                	sh 'docker build -t calculator test/ '
-                    sh 'docker run -d -p 5000:5000 calculatot'
+                	sh 'docker build -t calculator:latest . '
+                    sh 'docker run -d -p 5000:5000 calculator'
                   }
             }
         }
