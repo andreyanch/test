@@ -1,8 +1,8 @@
 FROM python:3.8.2
-RUN apk add --no-cache curl  wget  busybox-extras netcat-openbsd py-pip && \
-    pip install awscli
-RUN apk --purge -v del py-pip
+RUN pip install flask
+RUN pip install pytz
+
 ADD https://github.com/andreyanch/test/blob/master/calculatot.py ./
 EXPOSE 5050
 CMD (tail -f /dev/null) && ["python3", "./calculatot.py"]
-#CMD tail -f /dev/null
+
