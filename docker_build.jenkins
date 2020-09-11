@@ -20,7 +20,7 @@ pipeline {
         stage("clone git project to local folder") {
             steps {
                 sh 'git clone https://github.com/andreyanch/test'
-                
+                sh 'docker rm -f $(docker ps -a -q)'
             }
         }
         
