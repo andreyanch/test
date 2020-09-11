@@ -1,4 +1,4 @@
-FROM alpine
+FROM python:3.8.2
 RUN apk add --no-cache curl  wget  busybox-extras netcat-openbsd py-pip && \
     pip install awscli
 RUN apk --purge -v del py-pip
