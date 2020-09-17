@@ -10,8 +10,8 @@ def home():
     a = request.args.get("a")
     znak = request.args.get("znak")
     b = request.args.get("b")
-    #return raschet(a, b, znak)
-    rerturn "Hello"
+    # return raschet(a, b, znak)
+    return "Hello"
 
 
 def raschet(a, b, znak):
@@ -27,13 +27,13 @@ def raschet(a, b, znak):
         else:
             return str(int(a) / int(b));
 
-        
-@app.route("/hello", methods=["POST"])
+
+@app.route("/hello", methods=["GET"])
 def hello():
     return "No Hello"
 
 
-#if (__name__ == "__main__"):
+# if (__name__ == "__main__"):
 #    app.run(debug=True)
 
 app.run(host='0.0.0.0', port=5000)
