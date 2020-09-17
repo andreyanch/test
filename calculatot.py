@@ -10,8 +10,8 @@ def home():
     a = request.args.get("a")
     znak = request.args.get("znak")
     b = request.args.get("b")
-    return raschet(a, b, znak)
-
+    #return raschet(a, b, znak)
+    rerturn "Hello"
 
 
 def raschet(a, b, znak):
