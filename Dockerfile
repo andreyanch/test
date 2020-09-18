@@ -1,10 +1,12 @@
-FROM alpine
-RUN apt-get install python3 
+FROM python:3.8.2
 
-ADD https://github.com/andreyanch/test/blob/master/calculatot.py ./
+RUN mkdir -p /usr/src/test
+WORKDIR /usr/src/test
+
+COPY . /usr/scr/test
 
 RUN pip install flask
 
 EXPOSE 5000
 
-CMD ["python", "./calculatot.py"]
+CMD ["python", "/usr/scr/test/calculatot.py"]
