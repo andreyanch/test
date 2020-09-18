@@ -28,9 +28,7 @@ def raschet(a, b, znak):
             return str(int(a) / int(b));
 
 
-#@app.route("/hello", methods=["GET"])
-#def hello():
-    #return "No Hello"
+
 
 
 # if (__name__ == "__main__"):
