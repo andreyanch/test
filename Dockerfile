@@ -7,4 +7,4 @@ RUN pip install flask
 
 EXPOSE 5000
 
-CMD ["python", "/usr/scr/test/calculatot.py"]
+CMD ["python", "./calculatot.py"]
