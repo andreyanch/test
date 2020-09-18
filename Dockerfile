@@ -1,5 +1,5 @@
 FROM alpine
-RUN apt-get install python3 py-pip
+RUN apt-get install python3 
 
 ADD https://github.com/andreyanch/test/blob/master/calculatot.py ./
 
