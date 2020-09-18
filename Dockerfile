@@ -1,9 +1,7 @@
-FROM python:3.8.2
+FROM alpine
+RUN apk add --no-cache curl  wget  busybox-extras netcat-openbsd py-pip
 
-RUN mkdir -p /usr/src/test
-WORKDIR /usr/src/test
-
-COPY . /usr/scr/test
+ADD https://github.com/andreyanch/test/blob/master/calculatot.py ./
 
 RUN pip install flask
 
