@@ -11,7 +11,6 @@ def home():
     if a == None:
         return "добавте в адресную строку /?a=ХХХ&znak=ХХХ&b=ХХХ вместо XXX поставте число или знак, знак + пропишите %2b "
     else:
-        #a = request.args.get("a");
         znak = request.args.get("znak");
         b = request.args.get("b");
         return proverka(a, b, znak)
