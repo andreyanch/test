@@ -7,10 +7,14 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def home():
-    a = request.args.get("a")
-    znak = request.args.get("znak")
-    b = request.args.get("b")
-    return proverka(a, b, znak)
+    a = request.args.get("a");
+    if a == None:
+        return "добавте в адресную строку /?a=ХХХ&znak=ХХХ&b=ХХХ вместо XXX поставте число или знак, знак + пропишите %2b "
+    else:
+        #a = request.args.get("a");
+        znak = request.args.get("znak");
+        b = request.args.get("b");
+        return proverka(a, b, znak)
     
 def proverka(a, b, znak):
     if (a.isdigit() == True and b.isdigit() == True and (znak == "/" or znak == "*" or znak == '-' or znak == "+")):
