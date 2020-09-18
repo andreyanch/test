@@ -10,9 +10,13 @@ def home():
     a = request.args.get("a")
     znak = request.args.get("znak")
     b = request.args.get("b")
-    return raschet(a, b, znak)
-    #return "Hello"
-
+    return proverka(a, b, znak)
+    
+def proverka(a, b, znak):
+    if (a.isdigit() == True and b.isdigit() == True and (znak == "/" or znak == "*" or znak == '-' or znak == "+")):
+        return raschet(a, b, znak)
+    else:
+        return "неверный ввод данных"
 
 def raschet(a, b, znak):
     if znak == '+':
@@ -27,11 +31,5 @@ def raschet(a, b, znak):
         else:
             return str(int(a) / int(b));
 
-
-
-
-
-# if (__name__ == "__main__"):
-#    app.run(debug=True)
 
 app.run(host='0.0.0.0', port=5000)
