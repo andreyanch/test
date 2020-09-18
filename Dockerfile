@@ -1,5 +1,5 @@
 FROM alpine
-RUN apk add --no-cache curl  wget  busybox-extras netcat-openbsd py-pip
+RUN apt-get install python3 py-pip
 
 ADD https://github.com/andreyanch/test/blob/master/calculatot.py ./
 
